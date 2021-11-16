@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+<body>
+	
+ <div class="login">
+	<h3>Prediction of asthma as a side affect after vaccination</h3>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+    	<input type="text" name="Vaccine_type" placeholder="VAX_TYPE" required="required"/>
+ 
+  HEPA - 0 RV5 - 1 FLU3 - 2 HEP - 3 TDAP - 4 VARZOS - 5 
+  PP4 - 6 FLU4 - 7 ANTH - 8 MMR - 9 UNK - 10
+  <br/>
+    	<input type="text" name="Age_Years" placeholder="AGE_YEARS" required="required"/>
+    
+        <input type="text" name="Gender" placeholder="GENDER" required="required"/>
+    	Male-1 Female-0
+    	<br/>
+		<input type="text" name="Sleeping_problem" placeholder="SLEEPING_PROB" required="required"/>
+For the below attributes,
+	True-1 False-0
+	<br/>
+		<input type="text" name="Chest_tightness" placeholder="CHEST_TIGHTNESS" required="required"/>
+		<input type="text" name="Breath" placeholder="BREATH" required="required"/>
+		<input type="text" name="Cough" placeholder="COUGH" required="required"/>
+		<input type="text" name="Allergy" placeholder="ALLERGY" required="required"/>
+		<input type="text" name="Wheezing" placeholder="WHEEZING" required="required"/>
+	   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+	   <button onclick="myFunction()" class="btn btn-primary btn-block btn-large" target=_blank>Precautions</button>
+
+<script>
+function myFunction() {
+  window.open("https://www.webmd.com/asthma/guide/asthma-prevention", "_blank")
+}
+
+</script>
+	       </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+ </div>
+</body>
+</html>
+
